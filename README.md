@@ -17,46 +17,7 @@ A terraform module which creates network skeleton on AWS with best practices in 
 
 ---
 
-<<<<<<< HEAD
 
-=======
-## 🔐 AWS Permissions (Required)
-
-Essential AWS IAM permissions required for complete MOSIP deployment:
-
-### Core Infrastructure Services
-
-- **VPC Management**: VPC, Subnets, Internet Gateways, NAT Gateways, Route Tables  
-- **EC2 Services**: Instance management, Security Groups, Key Pairs, EBS Volumes  
-- **Route 53**: DNS management, Hosted Zones, Record Sets  
-- **IAM**: Role creation, Policy management, Instance Profiles  
-
-### ✅ Recommended IAM Policy
-
-```json
-{
- "Version": "2012-10-17",
- "Statement": [
-   {
-     "Effect": "Allow",
-     "Action": [
-       "ec2:*",
-       "vpc:*",
-       "route53:*",
-       "iam:*",
-       "s3:*"
-     ],
-     "Resource": "*"
-   }
- ]
-}
-````
-
-> **Security Note:**
-> For production environments, consider using more restrictive policies with specific resource ARNs and condition statements.
-
----
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 
 # 🚀 Terraform Infrastructure Deployment Guide
 
@@ -226,7 +187,6 @@ Each folder contains its own Terraform configuration files:
 Navigate to the **network skeleton** directory:
 
 ```bash
-<<<<<<< HEAD
 cd env/prod/network-skeleton/credissuer-network-skeleton
 ```
 ## ⚙️ Customizing Terraform Variables Before Execution
@@ -290,11 +250,6 @@ terraform {
   }
 }
 ```
-=======
-cd network-skeleton/credissuer-network-skeleton
-```
-
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 Run Terraform commands:
 
 ```bash
@@ -311,7 +266,6 @@ Navigate to the **core-vm** directory:
 ```bash
 cd env/prod/compute/core-vm
 ```
-<<<<<<< HEAD
 # 💻 Configuring EC2 and Security Group Variables in Terraform
 
 Before running your Terraform code, ensure that certain variables are correctly defined in the **`terraform.tfvars`** file.  
@@ -331,8 +285,6 @@ In the **`terraform.tfvars`** file, make sure to include or update the following
 
 ---
 ### 🔹Before running your Terraform configuration for the **core VM**, make sure to update the **S3 bucket name** in both the **`data.tf`** and **`backend.tf`** files.  
-=======
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 
 Run Terraform commands:
 
@@ -352,7 +304,6 @@ Navigate to the **opt-vm** directory:
 ```bash
 cd env/prod/compute/opt-vm
 ```
-<<<<<<< HEAD
 # 💻 Configuring EC2 and Security Group Variables in Terraform
 
 Before running your Terraform code, ensure that certain variables are correctly defined in the **`terraform.tfvars`** file.  
@@ -374,9 +325,6 @@ In the **`terraform.tfvars`** file, make sure to include or update the following
 
 
 ---
-=======
-
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 Run Terraform commands:
 
 ```bash
@@ -395,7 +343,6 @@ Navigate to the **main-vm** directory:
 ```bash
 cd env/prod/compute/main-vm
 ```
-<<<<<<< HEAD
 # 💻 Configuring EC2 and Security Group Variables in Terraform
 
 Before running your Terraform code, ensure that certain variables are correctly defined in the **`terraform.tfvars`** file.  
@@ -417,9 +364,6 @@ In the **`terraform.tfvars`** file, make sure to include or update the following
 
 
 ---
-=======
-
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 Run Terraform commands:
 
 ```bash
@@ -438,8 +382,4 @@ When you need to tear down the infrastructure, use the following command from wi
 ```bash
 terraform destroy -auto-approve
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> ddaeefb9081d632f0c4695a7abeedf8459620007
 
