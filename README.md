@@ -108,55 +108,116 @@ Before proceeding, ensure the following prerequisites are completed:
 * **Terraform** is installed and configured on your system.
 * **AWS CLI** is installed and configured with valid credentials.
 
-Once prerequisites are complete, follow the steps below:
+---
+
+## 📁 Directory Structure Overview
+
+```
+TERRAFORM-SCRIPT/
+└── env/
+    └── prod/
+        └── compute/
+            ├── core-vm/
+            ├── main-vm/
+            └── opt-vm/
+└── network-skeleton/
+    └── credissuer-network-skeleton/
+```
+
+Each folder contains its own Terraform configuration files:
+
+* `backend.tf`
+* `provider.tf`
+* `main.tf`
+* `output.tf`
+* `variables.tf`
+* `terraform.tfvars`
 
 ---
 
-## Step 1: Initialize Terraform
+# 🧱 Deployment Steps per Module
+
+
+## 🌐 1. Network Skeleton Deployment
+
+Navigate to the **network skeleton** directory:
+
+```bash
+cd network-skeleton/credissuer-network-skeleton
+```
+
+Run Terraform commands:
 
 ```bash
 terraform init
-```
-
-* **Description:**
-  Initializes the Terraform working directory.
-  This command downloads the required provider plugins and sets up the local backend.
-
-## Step 2: Validate Terraform Configuration
-
-```bash
 terraform validate
-```
-
-* **Description:**
-  Validates the Terraform configuration files to ensure that the syntax is correct and all required arguments are provided.
-
-## Step 3: Create a Terraform Execution Plan
-
-```bash
 terraform plan
-```
-
-* **Description:**
-  Generates and displays an execution plan, showing what Terraform will do before actually making any changes.
-
-## Step 4: Apply the Terraform Plan
-
-```bash
 terraform apply -auto-approve
 ```
 
-* **Description:**
-  Applies the Terraform configuration to provision infrastructure automatically, without prompting for manual approval.
+## 🖥️ 2. Core VM Deployment
 
-## Step 5: Destroy the Infrastructure
+Navigate to the **core-vm** directory:
+
+```bash
+cd env/prod/compute/core-vm
+```
+
+Run Terraform commands:
+
+```bash
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+```
+
+---
+
+## 🖥️ 3. Opt VM Deployment
+
+Navigate to the **opt-vm** directory:
+
+```bash
+cd env/prod/compute/opt-vm
+```
+
+Run Terraform commands:
+
+```bash
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+```
+
+---
+
+## 🖥️ 4. Main VM Deployment
+
+Navigate to the **main-vm** directory:
+
+```bash
+cd env/prod/compute/main-vm
+```
+
+Run Terraform commands:
+
+```bash
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+```
+
+---
+
+# 🧨 Destroy Infrastructure (Cleanup)
+
+When you need to tear down the infrastructure, use the following command from within the same directory where you applied it:
 
 ```bash
 terraform destroy -auto-approve
 ```
-
-* **Description:**
-  Destroys all resources created by Terraform automatically, without prompting for confirmation.
-
 
 
