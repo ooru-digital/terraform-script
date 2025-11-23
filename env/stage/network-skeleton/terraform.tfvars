@@ -1,7 +1,7 @@
 ##############################
 # VPC
 ##############################
-vpc_cidr             = "10.0.0.0/16"
+vpc_cidr             = "10.0.0.0/18"
 instance_tenancy     = "default"
 enable_dns_support   = true
 enable_dns_hostnames = true
@@ -11,7 +11,12 @@ enable_dns_hostnames = true
 # Subnets                     
 ##############################
 subnet_names = ["public-sub-1" , "app-private-sub-1", "public-sub-2", "app-private-sub-2" ]
-subnet_cidrs = ["10.0.0.0/23", "10.0.4.0/22", "10.0.6.0/24", "10.0.8.0/24"] 
+subnet_cidrs = [
+  "10.0.0.0/23",   # public-1
+  "10.0.8.0/22",   # private-1
+  "10.0.2.0/23",   # public-2
+  "10.0.12.0/22"   # private-2
+]
 subnet_azs   = ["ap-south-1a", "ap-south-1a", "ap-south-1b", "ap-south-1b"]
 
 public_route_table    = "public-rt"
