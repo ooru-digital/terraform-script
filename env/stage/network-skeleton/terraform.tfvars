@@ -1,23 +1,24 @@
 ##############################
 # VPC
 ##############################
-vpc_cidr             = "172.31.0.0/16"
+vpc_cidr             = "10.0.0.0/16"
 instance_tenancy     = "default"
 enable_dns_support   = true
 enable_dns_hostnames = true
 
 
 ##############################
-# Subnets
+# Subnets                     
 ##############################
-subnet_names = ["public-sub-1", "private-sub-1", "private-sub-2" ]
-subnet_cidrs = ["172.31.0.0/20", "172.31.16.0/20", "172.31.32.0/20"] 
-subnet_azs   = ["ap-south-1a", "ap-south-1a", "ap-south-1a"]
+subnet_names = ["public-sub-1" , "app-private-sub-1", "public-sub-2", "app-private-sub-2" ]
+subnet_cidrs = ["10.0.0.0/23", "10.0.4.0/22", "10.0.6.0/24", "10.0.8.0/24"] 
+subnet_azs   = ["ap-south-1a", "ap-south-1a", "ap-south-1b", "ap-south-1b"]
 
 public_route_table    = "public-rt"
 private_route_table   = "private-rt"
 public_rt_cidr_block  = "0.0.0.0/0"
 private_rt_cidr_block = "0.0.0.0/0"
+
 
 # Use indexes for both public subnets
 public_subnet_indexes = [0, 2] # index 0 = public-1, index 2 = public-2
@@ -94,7 +95,7 @@ is_internal = false
 ##############################
 provisioner = "terraform"
 tags = {
-  Environment = "prod"
+  Environment = "stage"
   Owner       = "ooru"
 }
 
@@ -119,15 +120,15 @@ endpoint_egress_rules = []
 ##############################
 create_key_pair       = false
 create_private_key    = false
-key_pair_name         = "otbp-key"
+key_pair_name         = ""
 private_key_algorithm = "RSA"
 private_key_rsa_bits  = 4096
 public_key_path       = ""                                           # Leave blank if you're generating the key
 key_output_dir        = "" # Directory where PEM file will be saved
 
-env     = "prod"
+env     = "stage"
 owner   = "ooru"
-program = "credissuer-ooru-vpc"
+program = "credissuer"
 region  = "ap-south-1"
 
 enable_alb_sg      = false
