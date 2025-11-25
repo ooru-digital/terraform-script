@@ -6,7 +6,7 @@ module "ec2_instance" {
   instance_type        = var.instance_type
   public_ip            = var.public_ip
   key_name             = var.key_name
-  subnet               = data.terraform_remote_state.network.outputs.private_subnet_ids[0]
+  subnet               = data.terraform_remote_state.network.outputs.private_subnet_ids[1]
   security_groups      = [module.main_vm_sg.sg_id]
   volume_size          = var.volume_size
   volume_type          = var.volume_type
